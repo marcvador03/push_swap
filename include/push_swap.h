@@ -6,7 +6,7 @@
 /*   By: mfleury <mfleury@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:48:55 by mfleury           #+#    #+#             */
-/*   Updated: 2024/09/19 17:17:50 by mfleury          ###   ########.fr       */
+/*   Updated: 2024/10/01 13:04:12 by mfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_stack	*ps_parse(char **args, int flag);
 t_stack	*ps_parse_split(char *s, char c);
 
 /*Algorithms search functions and movement optimization*/
+int		is_sorted(t_stack *stk);
+int		almost_sorted(t_stack a);
 int		search_pos(t_stack *target, t_stack *stk);
 t_stack	*search_next_big(unsigned int n, unsigned int min, t_stack *stk);
 t_stack	*search_next_small(unsigned int n, unsigned int max, t_stack *stk);

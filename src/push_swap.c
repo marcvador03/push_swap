@@ -6,11 +6,12 @@
 /*   By: mfleury <mfleury@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 15:35:20 by mfleury           #+#    #+#             */
-/*   Updated: 2024/09/19 17:17:35 by mfleury          ###   ########.fr       */
+/*   Updated: 2024/10/01 12:40:32 by mfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+void	list_display(t_stack *head_a, t_stack *head_b);
 
 static void	stack_free(t_stack *stk)
 {
@@ -109,6 +110,7 @@ int	main(int argc, char *argv[])
 		sort_five(&a, NULL);
 	else
 		turk_sort(&a, NULL);
+	list_display(a, NULL);
 	push_swap_exit(NULL, NULL, &a->head, NULL);
 	return (0);
 }

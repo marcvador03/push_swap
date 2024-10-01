@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_sort_utils.c                                  :+:      :+:    :+:   */
+/*   cost_calculations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfleury <mfleury@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 20:59:53 by mfleury           #+#    #+#             */
-/*   Updated: 2024/09/19 13:19:24 by mfleury          ###   ########.fr       */
+/*   Updated: 2024/10/01 12:44:16 by mfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,21 @@ static int	minimize_cost(int *cnt, t_spec *sa, t_spec *sb)
 	return (res);
 }
 
+static int	in_pos(t_stack *stk)
+{
+	t_spec	s;
+
+	s.n_max = stk->n_value;
+	stk = stk->next;
+	while (stk != NULL)
+	{
+		if (stk->n_value < s.n_max)
+			return (0);
+		stk = stk->next;	
+	}
+	return (1);
+}
+
 void	update_cost_min(t_stack *a, t_stack *b)
 {
 	int		cnt[2];
@@ -79,13 +94,12 @@ void	update_cost_min(t_stack *a, t_stack *b)
 		target_b = search_next_small(a->n_value, sb.n_max, b);
 		cnt[1] = 0;
 		b = b->head;
-		while (b != target_b && b != NULL)
-		{
-			cnt[1]++;
+		while (b != target_b && b != NULL && cnt[1]++ >= 0)
 			b = b->next;
-		}
 		a->target = b;
 		a->cost = minimize_cost(cnt, &sa, &sb);
+		if (in_pos(a) == 1)
+			a->cost = UINT_MAX;
 		cnt[0]++;
 		a = a->next;
 	}
@@ -108,14 +122,40 @@ void	update_cost_max(t_stack *b, t_stack *a)
 		target_a = search_next_big(b->n_value, sa.n_min, a);
 		cnt[1] = 0;
 		a = a->head;
-		while (a != target_a && a != NULL)
-		{
-			cnt[1]++;
+		while (a != target_a && a != NULL && cnt[1]++ >= 0)
 			a = a->next;
-		}
 		b->target = a;
 		b->cost = minimize_cost(cnt, &sb, &sa);
 		cnt[0]++;
 		b = b->next;
 	}
 }
+
+/*void	update_cost(t_stack *fr, t_stack *to)
+{
+	int		cnt[2];
+	t_spec	sfr;
+	t_spec	sto;
+	t_stack	*target_to;
+
+	fr = fr->head;
+	target_to = NULL;
+	sfr = fill_specs(fr, NULL);
+	sto = fill_specs(to, NULL);
+	cnt[0] = 0;
+	while (fr != NULL)
+	{
+		target_to = search_next_small(fr->n_value, sto.n_max, to);
+		cnt[1] = 0;
+		to = to->head;
+		while (to != target_to && to != NULL)
+		{
+			cnt[1]++;
+			to = to->next;
+		}
+		fr->target = fr;
+		fr->cost = minimize_cost(cnt, &sfr, &sto);
+		cnt[0]++;
+		fr = fr->next;
+	}
+}*/

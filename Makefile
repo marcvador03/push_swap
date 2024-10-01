@@ -17,7 +17,8 @@ SRC_NAMES := push_swap.c \
 			 push_swap_parse_checks.c \
 			 three_five_sort.c \
 			 turk_sort.c \
-			 cost_calculations.c
+			 cost_calculations.c \
+			 list_display.c
 
 INC_NAMES := push_swap.h
 

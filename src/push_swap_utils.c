@@ -6,7 +6,7 @@
 /*   By: mfleury <mfleury@student.42barcelona.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 13:26:16 by mfleury           #+#    #+#             */
-/*   Updated: 2024/09/18 22:27:51 by mfleury          ###   ########.fr       */
+/*   Updated: 2024/10/01 13:04:02 by mfleury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,46 @@ t_spec	fill_specs(t_stack *stk, t_stack *target)
 	}
 	s.med = s.size / 2;
 	return (s);
+}
+
+int	is_sorted(t_stack *stk)
+{
+	int		prev;
+	t_stack	*head;
+
+	head = stk;
+	prev = stk->value;
+	while (stk != NULL)
+	{
+		if (prev <= stk->value)
+		{
+			prev = stk->value;
+			stk = stk->next;
+		}
+		else
+			return (0) ;
+	}
+	stk = head;
+	return (1);
+}
+
+int	almost_sorted(t_stack stk)
+{
+	t_stack	head;
+	t_stack	tmp;
+	t_spec	s;
+
+	head = stk;
+	s = fill_specs(&stk, NULL);
+	while (stk.value != s.min)
+	{
+		if (stk.next == NULL)
+			stk.next = &head;
+		tmp = stk;
+		stk = *stk.next;
+	}
+	tmp.next = NULL;
+	return (is_sorted(&stk));
 }
 
 int	min(int x, int y)
