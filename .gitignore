@@ -3,4 +3,6 @@
 a.out
 checker_linux
 checker_Mac
-*.o	
+*.o
+*.d
+obj/	
