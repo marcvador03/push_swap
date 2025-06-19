@@ -13,6 +13,9 @@ launch in your terminal "./push_swap" followed by signed integer numbers separat
 "make fclean" removes object files and the program.
 "make re" does a "make fclean" followed by a "make" to regenerate all files.
 
+**Dependencies**
+None, standard libc libraries are used and my owned coded functions ("libft") are statically embedded in the project.
+
 **Additional information**
 
 The program uses a Turk Algorithm to sort 100 random numbers in less than 700 operations, and 500 numbers in less than 5500 operations, using only 2 stacks ('a' and 'b'). 
