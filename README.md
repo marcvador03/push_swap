@@ -14,6 +14,7 @@ launch in your terminal "./push_swap" followed by signed integer numbers separat
 "make re" does a "make fclean" followed by a "make" to regenerate all files.
 
 **Dependencies**
+
 None, standard libc libraries are used and my owned coded functions ("libft") are statically embedded in the project.
 
 **Additional information**
