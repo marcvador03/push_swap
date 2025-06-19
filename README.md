@@ -1,7 +1,7 @@
 **Purpose**
 
 Push Swap is project from 42 School, coded in C. Purpose is to discover sorting algorithms and use them to sort number with minimum of movements (Time Complexity O()).
-The program acepts a list of integers (range within 8-bytes signed integer definition), and provides a list of movements to sort those numbers using only 2 stacks. 
+The program acepts a list of integers (range within 32-bytes signed integer definition), and provides a list of movements to sort those numbers using only 2 stacks. 
 
 **Installation**
 
