@@ -15,7 +15,7 @@ launch in your terminal "./push_swap" followed by signed integer numbers separat
 
 **Dependencies**
 
-None, standard libc libraries are used and my owned coded functions ("libft") are statically embedded in the project.
+My own library "Libft" which was developed as part of the school to mimic C standard functions is shipped with this project. We are restricted by the school in the external functions we can use for each project, but allowed to use our own functions and library such as Libft.
 
 **Additional information**
 
@@ -34,3 +34,5 @@ Operations allowed are:
 - rrr: rra and rrb executed at the same time.
 
 I first tried using a Radix sorting algo, although it was pretty simple to code it wasn't efficient to meet the minimum requirements of efficiency for the project... 
+
+*For C Projects, 42 School imposes a norm to follow strictly. Amongst many things, we are restricted to write no more than 25 lines per function, and 5 functions per file. I really do love norms, but just mentioning this to explain why sometimes we split functions and multiply files :)*
